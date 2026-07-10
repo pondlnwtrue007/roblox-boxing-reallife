@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Build (PyInstaller)
+build/
+dist/
+*.spec
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ค่าจูนของผู้ใช้ (เก็บใน %LOCALAPPDATA% อยู่แล้ว ไม่ควรลง repo)
+boxing_settings.json
