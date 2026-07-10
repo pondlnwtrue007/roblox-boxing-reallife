@@ -492,7 +492,21 @@ class BoxingApp(ctk.CTk):
         self.destroy()
 
 
+class _NullIO:
+    """ตัวรับ print กันพัง เมื่อ build เป็น .exe แบบ windowed (sys.stdout เป็น None)"""
+    def write(self, *a):
+        pass
+
+    def flush(self):
+        pass
+
+
 def main():
+    # ในโหมด windowed exe ไม่มี console -> sys.stdout/err = None ทำให้ print() พัง
+    if sys.stdout is None:
+        sys.stdout = _NullIO()
+    if sys.stderr is None:
+        sys.stderr = _NullIO()
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
