@@ -1,7 +1,13 @@
-# 🥊 Roblox Boxing — Real Life
+<p align="center">
+  <img src="assets/logo.png" width="120" alt="Roblox Boxing logo">
+</p>
 
-เล่นเกม **Untitled Boxing Game** บน Roblox ด้วยการ **ชกมวยจริงหน้าเว็บแคม**
-ใช้ **MediaPipe** จับท่าทางร่างกาย แล้วส่งคีย์บอร์ดเข้าเกมผ่าน **pydirectinput** (scancode)
+<h1 align="center">Roblox Boxing — Real Life</h1>
+
+<p align="center">
+เล่นเกม <b>Untitled Boxing Game</b> บน Roblox ด้วยการ <b>ชกมวยจริงหน้าเว็บแคม</b><br>
+ใช้ <b>MediaPipe</b> จับท่าทางร่างกาย แล้วส่งคีย์บอร์ดเข้าเกมผ่าน <b>pydirectinput</b>
+</p>
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)

@@ -8,12 +8,15 @@ dropdown เลือกหน้าต่างเป้าหมาย, ปุ
 (ถ้าอยากได้เวอร์ชันเบา/ดีบักด้วยหน้าต่าง OpenCV ใช้ python main.py แทน)
 """
 
+import os
 import sys
 import time
 import tkinter as tk
 
 import cv2
 from PIL import Image
+
+from paths import resource_path
 
 try:
     import customtkinter as ctk
@@ -76,6 +79,13 @@ class BoxingApp(ctk.CTk):
         self.minsize(980, 640)
         self.configure(fg_color=C_BG)
 
+        # ไอคอนหน้าต่าง (โลโก้นวมมวย)
+        self._logo_img = None
+        try:
+            self.iconbitmap(resource_path(os.path.join("assets", "icon.ico")))
+        except Exception:
+            pass
+
         # ---------- backend ----------
         self.detector = PoseDetector()
         self.logic = MotionLogic(cfg)
@@ -134,7 +144,13 @@ class BoxingApp(ctk.CTk):
 
         header = ctk.CTkFrame(left, fg_color="transparent")
         header.grid(row=0, column=0, sticky="ew")
-        ctk.CTkLabel(header, text="🥊  Roblox Boxing", font=("Segoe UI", 24, "bold"),
+        try:
+            logo = Image.open(resource_path(os.path.join("assets", "logo.png")))
+            self._logo_img = ctk.CTkImage(light_image=logo, dark_image=logo, size=(42, 42))
+            ctk.CTkLabel(header, image=self._logo_img, text="").pack(side="left", padx=(0, 8))
+        except Exception:
+            ctk.CTkLabel(header, text="🥊", font=("Segoe UI", 26)).pack(side="left", padx=(0, 8))
+        ctk.CTkLabel(header, text="Roblox Boxing", font=("Segoe UI", 24, "bold"),
                      text_color=C_TEXT).pack(side="left")
         ctk.CTkLabel(header, text="เล่นด้วยการชกมวยจริงหน้ากล้อง",
                      font=("Segoe UI", 13), text_color=C_GRAY).pack(side="left", padx=12)
